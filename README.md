@@ -99,7 +99,8 @@ Password: Paste the password copied from MobaXTerm
 Goto MobaXTerm ---> Come out of the terminal ---> exit
 
 - add this pom.xml file with your data
-
+  
+```
 <distributionManagement>
         <repository>
             <id>maven-releases</id>
@@ -110,10 +111,10 @@ Goto MobaXTerm ---> Come out of the terminal ---> exit
             <url>http://192.168.200.128:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
-
+```
   
 - Add this in settings.xml file
-
+```
 <server>
      <id>maven-releases</id>
      <username>admin</username>  
@@ -125,10 +126,11 @@ Goto MobaXTerm ---> Come out of the terminal ---> exit
      <username>admin</username>  
      <password>admin123</password>
 </server>
-
+```
 -----------------
-Final Script
+Jenkins Pipeline
 -----------------
+```
 pipeline {
     agent any
     tools {
@@ -137,7 +139,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/KastroVKiran/Nexus-Demo.git'
+                git branch: 'main', url: 'https://github.com/laxminarayan183/jenkins-nexus.git'
             }
         }
         stage('Compile') {
@@ -164,8 +166,9 @@ pipeline {
         }
     }
 }
-
+```
 ---> Apply ---> Save ---> Build the job
+
 
 
 
